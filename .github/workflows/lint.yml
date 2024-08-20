@@ -4,6 +4,10 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 
+  push:
+    branches:
+      - main
+
 jobs:
   run-check-script:
     runs-on: ubuntu-latest
