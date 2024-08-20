@@ -62,8 +62,9 @@
 
           shellHook = ''
             export PYTHONNOUSERSITE=1
+            set -e
             ./scripts/fix.sh
-            ./scripts/check.sh || { echo "Linting checks failed"; exit 1; }
+            ./scripts/check.sh
           '';
         };
       }
