@@ -65,6 +65,7 @@
             set -e
             ./scripts/fix.sh
             ./scripts/check.sh
+            set +e
           '';
         };
       }
