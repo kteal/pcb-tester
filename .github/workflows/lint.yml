@@ -8,9 +8,9 @@ on:
       - main
 
 jobs:
-  run-nix-develop-and-lint:
-    name: Run nix develop and lint
+  run-check-script:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout the code
         uses: actions/checkout@v3
@@ -20,8 +20,11 @@ jobs:
         with:
           nix_path: nixpkgs=channel:nixos-24.05
 
-      - name: Enter Nix Shell
-        run: nix develop
-
-      - name: Run check script
-        run: ./scripts/check.sh
+      - name: Run lint check script in Nix shell
+        run: |
+          nix develop -c '
+            set -e
+            echo "Entered Nix shell"
+            echo "Running check script"
+            ./scripts/check.sh
+          '
