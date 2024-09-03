@@ -23,13 +23,13 @@ jobs:
       - name: Run lint check script in Nix shell
         run: |
           REPO_ROOT="$GITHUB_WORKSPACE"
-          nix develop -c '
+          nix develop -c "
             set -e
-            cd "$REPO_ROOT"
-            echo "Entered Nix shell"
-            echo "Current directory: \$(pwd)"
-            echo "Contents:"
+            cd \"$REPO_ROOT\"
+            echo 'Entered Nix shell'
+            echo 'Current directory: $(pwd)'
+            echo 'Contents:'
             ls -R
-            echo "Running check script"
+            echo 'Running check script'
             ./scripts/check.sh
-          '
+          "
