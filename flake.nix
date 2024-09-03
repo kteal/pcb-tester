@@ -62,6 +62,8 @@
 
           shellHook = ''
             export PYTHONNOUSERSITE=1
+            set -e
+            ./scripts/check.sh
             set +e
           '';
         };
