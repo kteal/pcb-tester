@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
-isort --check src
 black --check src
+isort --check src
+flake518 src
 mypy src

@@ -4,11 +4,19 @@ target-version = ['py311']
 
 [tool.mypy]
 files = "src"
+python_version = 3.11
 strict = true
 ignore_missing_imports = true
 
 [tool.isort]
 profile = "black"
+include_trailing_comma = true
 
 [tool.pytest]
 testpaths = [ "src/tests" ]
+
+[tool.flake518]
+statistics = true
+max-line-length=88
+doctests = true
+exclude=[".git", "__pypackages__", ".vscode", ".mypy_cache", "venv"]
