@@ -12,3 +12,8 @@ profile = "black"
 
 [tool.pytest]
 testpaths = [ "src/tests" ]
+
+[tool.pytest.ini_options]
+markers = [
+    "safety: Tests for Safety Board",
+]
