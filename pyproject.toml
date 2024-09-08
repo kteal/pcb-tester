@@ -1,5 +1,5 @@
 [tool.black]
-line-length = 88
+line-length = 79
 target-version = ['py311']
 
 [tool.mypy]
@@ -17,6 +17,5 @@ testpaths = [ "src/tests" ]
 
 [tool.flake518]
 statistics = true
-max-line-length=88
-doctests = true
+max-line-length=79
 exclude=[".git", "__pypackages__", ".vscode", ".mypy_cache", "venv"]
