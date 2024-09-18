@@ -1,3 +1,3 @@
-#!/usr/bin/bash
-isort src
+#!/usr/bin/env sh
 black src
+isort src
