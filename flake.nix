@@ -31,6 +31,9 @@
 
           nativeBuildInputs = [
             pkgs.python311Packages.setuptools
+          ];
+
+          propagatedBuildInputs = [
             pkgs.python311Packages.numpy
           ];
 
@@ -41,12 +44,33 @@
           };
         };
 
+        flake518 = pkgs.python311Packages.buildPythonPackage {
+          pname = "flake518";
+          version = "1.6.0";
+          pyproject = true;
+
+          src = pkgs.fetchPypi {
+            pname = "flake518";
+            version = "1.6.0";
+            sha256 = "e02efcacb9609e4250265600c7efd559576ae75c93b8898e019fec63128c90b5";
+          };
+
+          nativeBuildInputs = [
+            pkgs.python311Packages.pdm-backend
+          ];
+
+          propagatedBuildInputs = [
+            pkgs.python311Packages.flake8
+          ];
+        };
+
         pythonEnv = pkgs.python311.withPackages (
           ps: with ps; [
             mypy
             black
             isort
             numpy
+            flake518
             matplotlib
             pydwf
             pytest
@@ -62,6 +86,8 @@
 
           shellHook = ''
             export PYTHONNOUSERSITE=1
+            set -e
+            ./scripts/check.sh
             set +e
           '';
         };
